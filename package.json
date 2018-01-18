@@ -60,8 +60,7 @@
     "he": "1.1.x",
     "ncname": "1.0.x",
     "param-case": "2.1.x",
-    "relateurl": "0.2.x",
-    "uglify-js": "3.3.x"
+    "relateurl": "0.2.x"
   },
   "devDependencies": {
     "grunt": "1.0.x",
