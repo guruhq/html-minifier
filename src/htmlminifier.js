@@ -448,8 +448,6 @@ TokenChain.prototype = {
   }
 };
 
-var utils = require('./utils');
-
 function trimWhitespace(str) {
   if (typeof str !== 'string') {
     return str;
