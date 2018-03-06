@@ -39,6 +39,7 @@
     "html-minifier": "./cli.js"
   },
   "main": "src/htmlminifier.js",
+  "browser": "dist/htmlminfier.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kangax/html-minifier.git"
