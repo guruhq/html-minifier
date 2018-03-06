@@ -596,7 +596,7 @@ function isAttributeRedundant(tag, attrName, attrValue, attrs) {
 
 // https://mathiasbynens.be/demo/javascript-mime-type
 // https://developer.mozilla.org/en/docs/Web/HTML/Element/script#attr-type
-var executableScriptsMimetypes = utils.createMap([
+var executableScriptsMimetypes = createMap([
   'text/javascript',
   'text/ecmascript',
   'text/jscript',
