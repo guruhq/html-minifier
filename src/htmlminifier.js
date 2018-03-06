@@ -1,8 +1,5 @@
 'use strict';
 
-var CleanCSS = require('clean-css');
-var decode = require('he').decode;
-
 function createMap(values, ignoreCase) {
   var map = {};
   values.forEach(function(value) {
@@ -969,10 +966,6 @@ function normalizeAttr(attr, attrs, tag, options) {
   var attrName = options.caseSensitive ? attr.name : attr.name.toLowerCase(),
       attrValue = attr.value;
 
-  if (options.decodeEntities && attrValue) {
-    attrValue = decode(attrValue, { isAttributeValue: true });
-  }
-
   if (options.removeRedundantAttributes &&
     isAttributeRedundant(tag, attrName, attrValue, attrs) ||
     options.removeScriptTypeAttributes && tag === 'script' &&
@@ -1142,13 +1135,8 @@ function processOptions(options) {
       text = text.replace(/(url\s*\(\s*)("|'|)(.*?)\2(\s*\))/ig, function(match, prefix, quote, url, suffix) {
         return prefix + quote + options.minifyURLs(url) + quote + suffix;
       });
-      try {
-        return new CleanCSS(minifyCSS).minify(text).styles;
-      }
-      catch (err) {
-        options.log(err);
-        return text;
-      }
+
+      return text;
     };
   }
 }
@@ -1553,9 +1541,6 @@ function minify(value, options, partialMarkup) {
     chars: function(text, prevTag, nextTag) {
       prevTag = prevTag === '' ? 'comment' : prevTag;
       nextTag = nextTag === '' ? 'comment' : nextTag;
-      if (options.decodeEntities && text && !specialContentTags(currentTag)) {
-        text = decode(text);
-      }
       if (options.collapseWhitespace) {
         if (!stackNoTrimWhitespace.length) {
           if (prevTag === 'comment') {
